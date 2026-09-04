@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore Admin - Agregar Producto</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+
+        <header class="admin-topbar">
+            🛒 TechStore — Panel de Administración
+        </header>
+
+        <aside class="admin-sidebar">
+            <a href="index.html">📊 Dashboard</a>
+            <a href="productos.html">📦 Productos</a>
+            <a href="agregar-producto.html" class="activo">➕ Agregar producto</a>
+            <a href="usuarios.html">👥 Usuarios</a>
+            <a href="pedidos.html">🧾 Pedidos</a>
+            <a href="../index.html">🌐 Ver sitio</a>
+        </aside>
+
+        <main class="admin-contenido">
+            <h1>Agregar producto</h1>
+
+            <div class="contenedor-formulario" style="max-width:600px; margin:0;">
+                <form>
+                    <div class="grupo-campo">
+                        <label for="nombre-prod">Nombre del producto</label>
+                        <input type="text" id="nombre-prod" placeholder="Ej: Laptop Ultrabook Pro">
+                    </div>
+                    <div class="grupo-campo">
+                        <label for="precio-prod">Precio</label>
+                        <input type="number" id="precio-prod" placeholder="Ej: 599990">
+                    </div>
+                    <div class="grupo-campo">
+                        <label for="stock-prod">Stock</label>
+                        <input type="number" id="stock-prod" placeholder="Ej: 10">
+                    </div>
+                    <div class="grupo-campo">
+                        <label for="categoria-prod">Categoría</label>
+                        <select id="categoria-prod">
+                            <option value="">Selecciona categoría</option>
+                            <option>Laptops</option>
+                            <option>Smartphones</option>
+                            <option>Audio</option>
+                            <option>Accesorios</option>
+                        </select>
+                    </div>
+                    <div class="grupo-campo">
+                        <label for="desc-prod">Descripción</label>
+                        <textarea id="desc-prod" rows="4" placeholder="Descripción del producto..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primario" style="width:100%;">
+                        Guardar producto
+                    </button>
+                </form>
+            </div>
+        </main>
+
+    </div>
+</body>
+</html>

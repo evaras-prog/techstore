@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore Admin - Acceso</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1e293b;
+        }
+        .admin-login-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .admin-login-box h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--color-primario);
+        }
+        .admin-login-box p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-box">
+        <h1>🛒 TechStore</h1>
+        <p>Panel de Administración</p>
+
+        <form action="index.html">
+            <div class="grupo-campo">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" placeholder="admin@techstore.cl">
+            </div>
+            <div class="grupo-campo">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn btn-primario" style="width:100%; margin-top:0.5rem;">
+                Ingresar al panel
+            </button>
+        </form>
+
+        <p style="text-align:center; margin-top:1.5rem; font-size:0.85rem;">
+            <a href="../index.html" style="color:var(--color-primario);">← Volver al sitio</a>
+        </p>
+    </div>
+</body>
+</html>

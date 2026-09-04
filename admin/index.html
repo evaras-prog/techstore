@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore Admin - Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css"
+</head>
+<body>
+    <div class="admin-wrapper">
+
+        <header class="admin-topbar">
+            TechStore - Panel de Administración
+        </header>
+
+        <aside class="admin-sidebar">
+            <a href="index.html" class="activo">Dashboard</a>
+            <a href="productos.html">Productos</a>
+            <a href="agregar-producto.html">Agregar producto</a>
+            <a href="usuarios.html">Usuarios</a>
+            <a href="pedidos.html">Pedidos</a>
+            <a href="../index.html">Ver sitio</a>
+        </aside>
+
+       <main class="admin-contenido">
+            <h1>Dashboard</h1>
+
+            <div class="grid-stats">
+                <div class="tarjeta-stat">
+                    <h3>Productos</h3>
+                    <p>24</p>
+                </div>
+                <div class="tarjeta-stat">
+                    <h3>Usuarios</h3>
+                    <p>138</p>
+                </div>
+                <div class="tarjeta-stat">
+                    <h3>Pedidos</h3>
+                    <p>57</p>
+                </div>
+                <div class="tarjeta-stat">
+                    <h3>Ingresos</h3>
+                    <p>$4,2M</p>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom:1rem;">Últimos pedidos</h2>
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th># Pedido</th>
+                        <th>Cliente</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1045</td>
+                        <td>Juan Pérez</td>
+                        <td>$599.990</td>
+                        <td>Enviado</td>
+                    </tr>
+                    <tr>
+                        <td>#1044</td>
+                        <td>María González</td>
+                        <td>$149.990</td>
+                        <td>Pendiente</td>
+                    </tr>
+                    <tr>
+                        <td>#1043</td>
+                        <td>Carlos Rojas</td>
+                        <td>$89.990</td>
+                        <td>Entregado</td>
+                    </tr>
+                </tbody>
+            </table>
+       </main> 
+    </div>
+</body>
+</html>

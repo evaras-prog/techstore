@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore Admin - Productos</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+
+        <header class="admin-topbar">
+            🛒 TechStore — Panel de Administración
+        </header>
+
+        <aside class="admin-sidebar">
+            <a href="index.html">Dashboard</a>
+            <a href="productos.html" class="activo">Productos</a>
+            <a href="agregar-producto.html">Agregar producto</a>
+            <a href="usuarios.html">Usuarios</a>
+            <a href="pedidos.html">Pedidos</a>
+            <a href="../index.html">Ver sitio</a>
+        </aside>
+
+        <main class="admin-contenido">
+            <h1>Productos</h1>
+            <a href="agregar-producto.html" class="btn btn-primario" style="margin-bottom:1.5rem; display:inline-block;">
+                ➕ Agregar producto
+            </a>
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>Laptop Ultrabook Pro</td>
+                        <td>$599.990</td>
+                        <td>12</td>
+                        <td>
+                            <a href="editar-producto.html" class="btn btn-secundario" style="padding:0.3rem 0.8rem; font-size:0.85rem;">Editar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Smartphone Galaxy X</td>
+                        <td>$399.990</td>
+                        <td>8</td>
+                        <td>
+                            <a href="editar-producto.html" class="btn btn-secundario" style="padding:0.3rem 0.8rem; font-size:0.85rem;">Editar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>Audífonos Bluetooth</td>
+                        <td>$49.990</td>
+                        <td>25</td>
+                        <td>
+                            <a href="editar-producto.html" class="btn btn-secundario" style="padding:0.3rem 0.8rem; font-size:0.85rem;">Editar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+    </div>
+</body>
+</html>
