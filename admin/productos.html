@@ -14,12 +14,12 @@
         </header>
 
         <aside class="admin-sidebar">
-            <a href="index.html">Dashboard</a>
-            <a href="productos.html" class="activo">Productos</a>
-            <a href="agregar-producto.html">Agregar producto</a>
-            <a href="usuarios.html">Usuarios</a>
-            <a href="pedidos.html">Pedidos</a>
-            <a href="../index.html">Ver sitio</a>
+            <a href="index.html"data-permiso="administrador">Dashboard</a>
+            <a href="productos.html"data-permiso="administrador vendedor" class="activo">Productos</a>
+            <a href="agregar-producto.html"data-permiso="administrador">Agregar producto</a>
+            <a href="usuarios.html"data-permiso="administrador">Usuarios</a>
+            <a href="pedidos.html"data-permiso="administrador vendedor">Pedidos</a>
+            <a href="../index.html"data-permiso="administrador vendedor cliente">Ver sitio</a>
         </aside>
 
         <main class="admin-contenido">
@@ -30,45 +30,24 @@
             <table class="tabla-admin">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Código</th>
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Stock</th>
+                        <th>Categorias</th>
                         <th>Acciones</th>
+                        <th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>Laptop Ultrabook Pro</td>
-                        <td>$599.990</td>
-                        <td>12</td>
-                        <td>
-                            <a href="editar-producto.html" class="btn btn-secundario" style="padding:0.3rem 0.8rem; font-size:0.85rem;">Editar</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>Smartphone Galaxy X</td>
-                        <td>$399.990</td>
-                        <td>8</td>
-                        <td>
-                            <a href="editar-producto.html" class="btn btn-secundario" style="padding:0.3rem 0.8rem; font-size:0.85rem;">Editar</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>003</td>
-                        <td>Audífonos Bluetooth</td>
-                        <td>$49.990</td>
-                        <td>25</td>
-                        <td>
-                            <a href="editar-producto.html" class="btn btn-secundario" style="padding:0.3rem 0.8rem; font-size:0.85rem;">Editar</a>
-                        </td>
+                <tbody id="tabla-productos">
+
+                </tbody>
                     </tr>
                 </tbody>
             </table>
         </main>
 
     </div>
+    <script src="../js/admin.js"></script>
 </body>
 </html>

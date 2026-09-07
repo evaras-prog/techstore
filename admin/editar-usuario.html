@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>
+        TechStore Admin - Agregar Usuario
+    </title>
+    <link
+        rel="stylesheet"
+        href="../css/styles.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- =====================================
+             ENCABEZADO
+        ====================================== -->
+        <header class="admin-topbar">
+            🛒 TechStore — Panel de Administración
+        </header>
+        <!-- =====================================
+             MENÚ LATERAL
+        ====================================== -->
+        <aside class="admin-sidebar"> 
+            <a href="index.html"data-permiso="administrador">📊 Dashboard </a>
+            <a href="productos.html"data-permiso="administrador vendedor">📦 Productos</a>
+            <a href="agregar-producto.html"data-permiso="administrador"> ➕ Agregar producto</a>
+            <a href="usuarios.html"data-permiso="administrador"class="activo">👥 Usuarios </a>
+            <a href="pedidos.html"data-permiso="administrador vendedor">🧾 Pedidos </a>
+            <a href="../index.html"data-permiso="administrador vendedor cliente">🌐 Ver sitio
+            </a>
+        
+        </aside>
+        <!-- =====================================
+             CONTENIDO PRINCIPAL
+        ====================================== -->
+        </q><main class="admin-contenido">
+            <h1>Agregar usuario</h1>
+            <div class="contenedor-formulario"style="max-width:700px; margin:0;">
+                
+                <!-- =================================
+                     FORMULARIO USUARIO
+                ================================== -->
+                <form id="form-usuario" novalidate> 
+
+                    <input type="hidden" id="run-original">
+
+
+                    <!-- Run-->
+                    <div class="grupo-campo">
+                    <label for="run-usuario"> Run </label>
+                        <input type="text" id="run-usuario" >
+                        <span class="error"id="error-run-usuario"> Ingresa un Run válido,sin puntos ni guion.
+                        <span class="error"id="error-run-duplicado"> Ya existe un usuario registrado con este RUN.
+                        </span>
+                    </div>
+                    <!-- NOMBRE -->
+                    <div class="grupo-campo">
+                        <label for="nombre-usuario"> Nombre</label>
+                        <input type="text"id="nombre-usuario" placeholder="Ej: Esteban">
+                        <span class="error"id="error-nombre-usuario"> El nombre es obligatorio y permite máximo 50 caracteres.
+                        </span>
+                    </div>
+                    <!-- APELLIDOS -->
+                    <div class="grupo-campo">
+                        <label for="apellidos-usuario"> Apellidos </label>
+                        <input type="text" id="apellidos-usuario" placeholder="Ej: Pérez Soto">
+                        <span class="error" id="error-apellidos-usuario"> Los apellidos son obligatorios y permiten máximo 100 caracteres. </span>
+                    </div>
+                    <!-- CORREO -->
+                    <div class="grupo-campo">
+                        <label for="correo-usuario"> Correo </label>
+                        <input type="email" id="correo-usuario" placeholder="Ej: usuario@duoc.cl">
+                        <span class="error" id="error-correo-usuario"> Utiliza un correo @duoc.cl, @profesor.duoc.cl o @gmail.com. </span>
+                    </div>
+                    <!-- FECHA NACIMIENTO -->
+                    <div class="grupo-campo"> <label for="fecha-usuario"> Fecha de nacimiento </label>
+                        <input type="date" id="fecha-usuario">
+                        <small> Campo opcional.</small>
+                    </div>
+
+                    <!-- TIPO DE USUARIO -->
+                    <div class="grupo-campo">
+                        <label for="tipo-usuario">Tipo de usuario </label>
+                        <select id="tipo-usuario">
+                            <option value=""> Selecciona tipo de usuario </option>
+                            <option value="Administrador"> Administrador </option> 
+                            <option value="Cliente"> Cliente </option>
+                            <option value="Vendedor"> Vendedor </option>
+                        </select>
+                    </div>
+                    <!-- REGIÓN -->
+                    <div class="grupo-campo">
+                        <label for="region-usuario"> Región </label>
+                        <select id="region-usuario">
+                            <option value="">Selecciona región</option>
+                        </select>
+                    </div>
+                    <!-- COMUNA -->
+                    <div class="grupo-campo">
+                        <label for="comuna-usuario">Comuna </label>
+                        <select id="comuna-usuario">
+                            <option value=""> Selecciona comuna </option>
+                        </select>
+                    </div>
+                    <!-- DIRECCIÓN -->
+
+                    <div class="grupo-campo">
+                        <label for="direccion-usuario">Dirección </label>
+                        <textarea id="direccion-usuario" rows="3" placeholder="Ej: Av. Principal 123"></textarea>
+                        <span class="error" id="error-direccion-usuario">
+                            La dirección es obligatoria y permite máximo 300 caracteres.
+                        </span>
+                    </div>
+
+                    <!-- BOTÓN -->
+                    <button type="submit" class="btn btn-primario" style="width:100%;">
+                        Guardar cambios
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+    <!-- ====================================
+         JAVASCRIPT ADMINISTRADOR
+    ====================================== -->
+    <script src="../js/admin.js"></script>
+    
+</body>
+</html>

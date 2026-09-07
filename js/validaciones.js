@@ -32,6 +32,7 @@ function validarFormRegistro(event){
 
     if (nombre === ''){
         mostrarError('error-nombre'); valido = false;
+
     } else {ocultarError('error-nombre');}
 
     if (apellido === ''){
@@ -137,9 +138,7 @@ function validarFormContacto(event){
 //Event Listeners
 const formRegistro = document.getElementById('form-registro');
 if (formRegistro) formRegistro.addEventListener('submit', validarFormRegistro);
-
 const formLogin = document.getElementById('form-login');
 if (formLogin) formLogin.addEventListener('submit', validarFormLogin);
-
 const formContacto = document.getElementById('form-contacto');
 if (formContacto) formContacto.addEventListener('submit', validarFormContacto)

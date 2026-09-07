@@ -14,12 +14,14 @@
         </header>
 
         <aside class="admin-sidebar">
-            <a href="index.html">📊 Dashboard</a>
-            <a href="productos.html">📦 Productos</a>
-            <a href="agregar-producto.html">➕ Agregar producto</a>
-            <a href="usuarios.html" class="activo">👥 Usuarios</a>
-            <a href="pedidos.html">🧾 Pedidos</a>
-            <a href="../index.html">🌐 Ver sitio</a>
+            <a href="index.html"data-permiso="administrador">📊 Dashboard</a>
+            <a href="productos.html"data-permiso="administrador vendedor">📦 Productos</a>
+            <a href="agregar-producto.html"data-permiso="administrador">➕ Agregar producto</a>
+            <a href="usuarios.html"data-permiso="administrador" class="activo">👥 Usuarios</a>
+            <a href="pedidos.html"data-permiso="administrador vendedor">🧾 Pedidos</a>
+            <a href="../index.html"data-permiso="administrador vendendor cliente">🌐 Ver sitio</a>
+            <a href="agregar-usuario.html" data-permiso="administrador" class="btn btn-primario"style="margin-bottom: 1.5rem; display: inline-block;">➕ Agregar usuario</a>
+
         </aside>
 
         <main class="admin-contenido">
@@ -28,39 +30,40 @@
             <table class="tabla-admin">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Run</th>
                         <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Teléfono</th>
-                        <th>Fecha registro</th>
-                    </tr>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Tipo</th>
+                        <th>Acciones</th>
+                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="tabla-usuarios">
                     <tr>
-                        <td>001</td>
+                        <td>18.315.867-5</td>
                         <td>Juan Pérez</td>
-                        <td>juan@correo.com</td>
+                        <td>juanp@duoc.cl</td>
                         <td>+56 9 1234 5678</td>
                         <td>12/08/2025</td>
                     </tr>
                     <tr>
-                        <td>002</td>
+                        <td>17.987.999-k</td>
                         <td>María González</td>
-                        <td>maria@correo.com</td>
+                        <td>maria.gon@duoc.cl</td>
                         <td>+56 9 8765 4321</td>
                         <td>15/08/2025</td>
                     </tr>
                     <tr>
-                        <td>003</td>
+                        <td>19.865.654-6</td>
                         <td>Carlos Rojas</td>
-                        <td>carlos@correo.com</td>
+                        <td>carlosrojas@gmail.com</td>
                         <td>+56 9 5555 4444</td>
                         <td>20/08/2025</td>
                     </tr>
                     <tr>
-                        <td>004</td>
+                        <td>16.865.978-4</td>
                         <td>Ana Martínez</td>
-                        <td>ana@correo.com</td>
+                        <td>anamartinez@profesor.duoc.cl</td>
                         <td>+56 9 3333 2222</td>
                         <td>25/08/2025</td>
                     </tr>
@@ -69,5 +72,6 @@
         </main>
 
     </div>
+    <script src="../js/admin.js"></script>
 </body>
 </html>
