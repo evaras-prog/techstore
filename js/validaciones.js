@@ -18,6 +18,10 @@ function esEmailValido(email){
     return regex.test(email);
 }
 
+function esEmailPermitido(email){
+    return /@duoc\.cl$|@profesor\.duoc\.cl$|@gmail\.com$/.test(email);
+}
+
 //Formulario de Registro
 function validarFormRegistro(event){
     event.preventDefault();
@@ -69,14 +73,14 @@ function validarFormLogin(event){
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
 
-    if (!esEmailValido(email)){
+    if (!esEmailValido(email) || !esEmailPermitido(email)){
         mostrarError('error-email');
         valido = false;
     } else {
-        ocultarError('error-email');
-    }
+    ocultarError('error-email');
+}
 
-    if (password === ''){
+    if (password.length < 4 || password.length > 10){
         mostrarError('error-password');
         valido = false;
     } else {
@@ -107,7 +111,7 @@ function validarFormContacto(event){
         ocultarError('error-nombre');
     }
 
-    if (!esEmailValido(email)) {
+    if (!esEmailValido(email) || !esEmailPermitido(email)) {
         mostrarError('error-email');
         valido = false;
     } else {
