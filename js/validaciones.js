@@ -14,7 +14,7 @@ function ocultarError(id){
 
 //Valida que el email tenga formato correcto
 function esEmailValido(email){
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regex = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/i;;
     return regex.test(email);
 }
 
@@ -39,7 +39,7 @@ function validarFormRegistro(event){
         mostrarError('error-apellido'); valido = false;
     } else {ocultarError('error-apellido');}
 
-    if (!esEmailValido(email)) {
+    if (email === "" ||email.length > 100 || !esEmailValido(email)) {
         mostrarError('error-email'); valido = false;
     } else { ocultarError('error-email'); }
 
@@ -47,11 +47,11 @@ function validarFormRegistro(event){
         mostrarError('error-telefono'); valido = false;
     } else { ocultarError('error-telefono'); }
 
-    if (password.length < 8) {
+    if (password.length < 4 || password.length > 10) {
         mostrarError('error-password'); valido = false;
     } else { ocultarError('error-password'); }
 
-    if (confirmar !== password) {
+    if (confirmar === "" || confirmar !== password) {
         mostrarError('error-confirmar'); valido = false;
     } else { ocultarError('error-confirmar'); }
 
@@ -69,18 +69,84 @@ function validarFormLogin(event){
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
 
-    if (!esEmailValido(email)){
+    if (email === "" ||email.length > 100 ||!esEmailValido(email)){
         mostrarError('error-email');
         valido = false;
     } else {
         ocultarError('error-email');
     }
 
-    if (password === ''){
+    if (password.length < 4 || password.length > 10){
         mostrarError('error-password');
         valido = false;
     } else {
         ocultarError('error-password');
+
+    }
+
+        if (!valido) return;
+
+
+    // OBTENER USUARIOS GUARDADOS 
+    const usuarios =
+        JSON.parse(localStorage.getItem("usuariosAdmin")) || [];
+
+
+    // BUSCAR CORREO Y CONTRASEÑA 
+    const usuarioEncontrado = usuarios.find(function (usuario) {
+
+        return (
+            usuario.correo.toLowerCase() === email.toLowerCase() &&
+            usuario.password === password
+        );
+
+    });
+
+
+    //  DATOS INCORRECTOS 
+    if (!usuarioEncontrado) {
+        mostrarError("error-login");
+        return;
+    }
+
+    ocultarError("error-login");
+
+
+    // GUARDAR USUARIO Y ROL ACTUAL 
+    localStorage.setItem(
+        "usuarioActual",
+        JSON.stringify(usuarioEncontrado)
+    );
+
+    localStorage.setItem(
+        "rolActual",
+        usuarioEncontrado.tipo
+    );
+
+
+    alert(
+        "Bienvenido " +
+        usuarioEncontrado.nombre +
+        " a TechStore"
+    );
+
+
+    //  REDIRECCIÓN SEGÚN ROL 
+
+    if (usuarioEncontrado.tipo === "Administrador") {
+
+        window.location.href =
+            "admin/index.html";
+
+    } else if (usuarioEncontrado.tipo === "Vendedor") {
+
+        window.location.href =
+            "admin/productos.html";
+
+    } else {
+
+        window.location.href =
+            "index.html";
     }
 
     if (valido){
@@ -100,14 +166,14 @@ function validarFormContacto(event){
     const asunto = document.getElementById('asunto').value;
     const mensaje = document.getElementById('mensaje').value.trim();
 
-    if (nombre === '') {
+    if (nombre === "" || nombre.length > 100) {
         mostrarError('error-nombre');
         valido = false;
     } else {
         ocultarError('error-nombre');
     }
 
-    if (!esEmailValido(email)) {
+    if (email.length > 100 || !esEmailValido(email)) {
         mostrarError('error-email');
         valido = false;
     } else {
@@ -121,7 +187,7 @@ function validarFormContacto(event){
         ocultarError('error-asunto');
     }
 
-    if (mensaje.length < 10) {
+    if (mensaje === "" || mensaje.length > 500) {
         mostrarError('error-mensaje');
         valido = false;
     } else {

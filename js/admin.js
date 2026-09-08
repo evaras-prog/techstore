@@ -15,6 +15,9 @@ const regionesComunas = [
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    /* PROTEGER PÁGINA */
+    if (!verificarAccesoPagina()) return;
+
     /* PRODUCTOS */
     const formProducto = document.getElementById("form-producto");
     if (formProducto) formProducto.addEventListener("submit", validarProducto);
@@ -65,6 +68,15 @@ document.addEventListener("DOMContentLoaded", function () {
         cargarUsuarioEditar();
     }
 
+    const btnCerrarSesion = document.getElementById("cerrar-sesion");
+
+    if (btnCerrarSesion) {
+    btnCerrarSesion.addEventListener("click", function (evento) {
+        evento.preventDefault();
+        cerrarSesion();
+    });
+
+    }
 
     /* PERMISOS */
     aplicarPermisos();
@@ -497,40 +509,18 @@ function validarUsuario(evento) {
 
     let formularioValido = true;
 
-    const run =
-        document.getElementById("run-usuario").value.trim().toUpperCase();
-
-    const nombre =
-        document.getElementById("nombre-usuario").value.trim();
-
-    const apellidos =
-        document.getElementById("apellidos-usuario").value.trim();
-
-    const correo =
-        document.getElementById("correo-usuario").value.trim();
-
-    const fechaNacimiento =
-        document.getElementById("fecha-usuario").value;
-
-    const tipoUsuario =
-        document.getElementById("tipo-usuario").value;
-
-    const region =
-        document.getElementById("region-usuario").value;
-
-    const comuna =
-        document.getElementById("comuna-usuario").value;
-
-    const direccion =
-        document.getElementById("direccion-usuario").value.trim();
-
-    const runOriginalInput =
-        document.getElementById("run-original");
-
-    const runOriginal =
-        runOriginalInput
-            ? runOriginalInput.value
-            : null;
+    const run =document.getElementById("run-usuario").value.trim().toUpperCase();
+    const nombre =document.getElementById("nombre-usuario").value.trim();
+    const apellidos =document.getElementById("apellidos-usuario").value.trim();
+    const correo =document.getElementById("correo-usuario").value.trim();
+    const password = document.getElementById("password-usuario").value;
+    const fechaNacimiento =document.getElementById("fecha-usuario").value;
+    const tipoUsuario =document.getElementById("tipo-usuario").value;
+    const region =document.getElementById("region-usuario").value;
+    const comuna =document.getElementById("comuna-usuario").value;
+    const direccion =document.getElementById("direccion-usuario").value.trim();
+    const runOriginalInput =document.getElementById("run-original");
+    const runOriginal =runOriginalInput? runOriginalInput.value: null;
 
 
     /* VALIDACIÓN RUN */
@@ -596,6 +586,20 @@ function validarUsuario(evento) {
         ocultarError("error-correo-usuario");
     }
 
+    // VALIDACIÓN CONTRASEÑA
+
+    if (password.length < 4 || password.length > 10) {
+        mostrarError("error-password-usuario");
+
+        formularioValido = false;
+
+    } else {
+        ocultarError("error-password-usuario");
+    }
+
+
+
+
 
     /* VALIDACIÓN DIRECCIÓN */
     if (
@@ -619,6 +623,7 @@ function validarUsuario(evento) {
         nombre: nombre,
         apellidos: apellidos,
         correo: correo,
+        password: password,
         fechaNacimiento: fechaNacimiento,
         tipo: tipoUsuario,
         region: region,
@@ -916,67 +921,22 @@ function cargarUsuarioEditar() {
     }
 
 
-    document.getElementById(
-        "run-original"
-    ).value =
-        usuario.run;
-
-
-    document.getElementById(
-        "run-usuario"
-    ).value =
-        usuario.run;
-
-
-    document.getElementById(
-        "nombre-usuario"
-    ).value =
-        usuario.nombre;
-
-
-    document.getElementById(
-        "apellidos-usuario"
-    ).value =
-        usuario.apellidos;
-
-
-    document.getElementById(
-        "correo-usuario"
-    ).value =
-        usuario.correo;
-
-
-    document.getElementById(
-        "fecha-usuario"
-    ).value =
-        usuario.fechaNacimiento || "";
-
-
-    document.getElementById(
-        "tipo-usuario"
-    ).value =
-        usuario.tipo;
-
-
-    document.getElementById(
-        "region-usuario"
-    ).value =
-        usuario.region;
+    document.getElementById( "run-original").value =usuario.run;
+    document.getElementById("run-usuario").value =usuario.run;
+    document.getElementById("nombre-usuario").value =usuario.nombre;
+    document.getElementById("apellidos-usuario").value =usuario.apellidos;
+    document.getElementById( "correo-usuario").value =usuario.correo;
+    document.getElementById("password-usuario").value =usuario.password || "";
+    document.getElementById("fecha-usuario").value =usuario.fechaNacimiento || "";
+    document.getElementById("tipo-usuario").value =usuario.tipo;
+    document.getElementById("region-usuario").value =usuario.region;
 
 
     cargarComunas();
 
 
-    document.getElementById(
-        "comuna-usuario"
-    ).value =
-        usuario.comuna;
-
-
-    document.getElementById(
-        "direccion-usuario"
-    ).value =
-        usuario.direccion;
+    document.getElementById("comuna-usuario").value =usuario.comuna;
+    document.getElementById("direccion-usuario").value =usuario.direccion;
 }
 
 
@@ -1124,6 +1084,91 @@ function actualizarProducto(codigoOriginal, productoActualizado) {
     return true;
 }
 
+function verificarAccesoPagina() {
+
+    const rol = localStorage.getItem("rolActual");
+    const pagina = window.location.pathname.split("/").pop();
+
+    /* NO HAY SESIÓN */
+    if (!rol) {
+        alert("Debes iniciar sesión para acceder al panel.");
+        window.location.href = "../login.html";
+        return false;
+    }
+
+    const rolNormalizado = rol.toLowerCase();
+
+    /* CLIENTE */
+    if (rolNormalizado === "cliente") {
+        window.location.href = "../index.html";
+        return false;
+    }
+
+    /* PÁGINAS PERMITIDAS */
+    const permisosPaginas = {
+
+        "index.html": ["administrador"],
+
+        "productos.html": [
+            "administrador",
+            "vendedor"
+        ],
+
+        "agregar-producto.html": [
+            "administrador"
+        ],
+
+        "editar-producto.html": [
+            "administrador"
+        ],
+
+        "usuarios.html": [
+            "administrador"
+        ],
+
+        "agregar-usuario.html": [
+            "administrador"
+        ],
+
+        "editar-usuario.html": [
+            "administrador"
+        ],
+
+        "pedidos.html": [
+            "administrador",
+            "vendedor"
+        ]
+    };
+
+
+    const rolesPermitidos =
+        permisosPaginas[pagina];
+
+
+    /* SI LA PÁGINA NO ESTÁ REGISTRADA */
+    if (!rolesPermitidos) {
+        return true;
+    }
+
+
+    /* NO TIENE PERMISO */
+    if (!rolesPermitidos.includes(rolNormalizado)) {
+
+        alert(
+            "No tienes permisos para acceder a esta página."
+        );
+
+        if (rolNormalizado === "vendedor") {
+            window.location.href =
+                "productos.html";
+        }
+
+        return false;
+    }
+
+
+    return true;
+}
 
 /* =========================================================
    PERMISOS
@@ -1205,4 +1250,14 @@ function aplicarPermisos() {
             }
         );
     }
+}
+
+function cerrarSesion() {
+
+    localStorage.removeItem("rolActual");
+    localStorage.removeItem("usuarioActual");
+
+    alert("Sesión cerrada correctamente.");
+
+    window.location.href = "../login.html";
 }
