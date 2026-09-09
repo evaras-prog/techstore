@@ -39,7 +39,8 @@ function agregarAlCarrito(id) {
     const producto = productos.find(function(p) { return p.id === id; });
     if (!producto) return;
 
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    // FIX: usa la misma clave 'carritoTechStore' que el resto del sistema
+    let carrito = JSON.parse(localStorage.getItem('carritoTechStore')) || [];
 
     const existente = carrito.find(function(p) { return p.id === id; });
 
@@ -49,16 +50,20 @@ function agregarAlCarrito(id) {
         carrito.push({ ...producto, cantidad: 1 });
     }
 
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+    localStorage.setItem('carritoTechStore', JSON.stringify(carrito));
+
+    // FIX: actualiza el contador del navbar
+    if (typeof actualizarContadorCarrito === 'function') actualizarContadorCarrito();
+
     alert(`"${producto.nombre}" añadido al carrito.`);
 }
 
 function mostrarDestacados() {
-    const cont=document.getElementById("productos-destacados");
-    if (!cont)return;
-    cont.innerHTML=obtenerProductos().slice(0, 4).map(crearTarjetaProducto).join("");
+    const cont = document.getElementById("productos-destacados");
+    if (!cont) return;
+    cont.innerHTML = obtenerProductos().slice(0, 4).map(crearTarjetaProducto).join("");
 }
 
 function productoPorCodigo(codigo) {
-    return obtenerProductos().find(p =>p.codigo===codigo);
+    return obtenerProductos().find(p => p.codigo === codigo);
 }

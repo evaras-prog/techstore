@@ -9,19 +9,16 @@
 <body>
     <div class="admin-wrapper">
 
-        <header class="admin-topbar">
-            🛒 TechStore — Panel de Administración
-        </header>
+        <header class="admin-topbar">🛒 TechStore — Panel de Administración</header>
 
         <aside class="admin-sidebar">
-            <a href="index.html"data-permiso="administrador">📊 Dashboard</a>
-            <a href="productos.html"data-permiso="administrador vendedor">📦 Productos</a>
-            <a href="agregar-producto.html"data-permiso="administrador">➕ Agregar producto</a>
-            <a href="usuarios.html"data-permiso="administrador">👥 Usuarios</a>
-            <a href="pedidos.html"data-permiso="administrador vendedor" class="activo">🧾 Pedidos</a>
-            <a href="../index.html"data-permiso="administrador vendedor cliente">🌐 Ver sitio</a>
-            <a href="#" id="cerrar-sesion">🚪 Cerrar sesión </a>
-            
+            <a href="index.html" data-permiso="administrador">📊 Dashboard</a>
+            <a href="productos.html" data-permiso="administrador vendedor">📦 Productos</a>
+            <a href="agregar-producto.html" data-permiso="administrador">➕ Agregar producto</a>
+            <a href="usuarios.html" data-permiso="administrador">👥 Usuarios</a>
+            <a href="pedidos.html" data-permiso="administrador vendedor" class="activo">🧾 Pedidos</a>
+            <a href="../index.html" data-permiso="administrador vendedor cliente">🌐 Ver sitio</a>
+            <a href="#" id="cerrar-sesion">🚪 Cerrar sesión</a>
         </aside>
 
         <main class="admin-contenido">
@@ -37,7 +34,8 @@
                         <th>Estado</th>
                     </tr>
                 </thead>
-                <tbody>
+                <!-- FIX: se eliminó el </thead> mal ubicado dentro del tbody y el tbody duplicado -->
+                <tbody id="tabla-pedidos">
                     <tr>
                         <td>#1045</td>
                         <td>Juan Pérez</td>
@@ -66,15 +64,13 @@
                         <td>$399.990</td>
                         <td>Entregado</td>
                     </tr>
-                    </thead>
-                    <tbody id="tabla-pedidos">
                 </tbody>
             </table>
         </main>
     </div>
-        <script src="../js/datos.js"></script>
-        <script src="../js/regiones.js"></script>
-        <script src="../js/validaciones.js"></script>
-        <script src="../js/admin.js"></script>   
+    <script src="../js/datos.js"></script>
+    <script src="../js/regiones.js"></script>
+    <script src="../js/validaciones.js"></script>
+    <script src="../js/admin.js"></script>
 </body>
 </html>

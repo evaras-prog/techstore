@@ -9,19 +9,17 @@
 <body>
     <div class="admin-wrapper">
 
-        <header class="admin-topbar">
-            🛒 TechStore — Panel de Administración
-        </header>
+        <header class="admin-topbar">🛒 TechStore — Panel de Administración</header>
 
         <aside class="admin-sidebar">
-            <a href="index.html"data-permiso="administrador">📊 Dashboard</a>
-            <a href="productos.html"data-permiso="administrador vendedor">📦 Productos</a>
-            <a href="agregar-producto.html"data-permiso="administrador">➕ Agregar producto</a>
-            <a href="usuarios.html"data-permiso="administrador" class="activo">👥 Usuarios</a>
-            <a href="pedidos.html"data-permiso="administrador vendedor">🧾 Pedidos</a>
-            <a href="../index.html"data-permiso="administrador vendendor cliente">🌐 Ver sitio</a>
-            <a href="agregar-usuario.html" data-permiso="administrador" class="btn btn-primario"style="margin-bottom: 1.5rem; display: inline-block;">➕ Agregar usuario</a>
-            <a href="#" id="cerrar-sesion">🚪 Cerrar sesión </a>
+            <a href="index.html" data-permiso="administrador">📊 Dashboard</a>
+            <a href="productos.html" data-permiso="administrador vendedor">📦 Productos</a>
+            <a href="agregar-producto.html" data-permiso="administrador">➕ Agregar producto</a>
+            <a href="usuarios.html" data-permiso="administrador" class="activo">👥 Usuarios</a>
+            <a href="pedidos.html" data-permiso="administrador vendedor">🧾 Pedidos</a>
+            <a href="../index.html" data-permiso="administrador vendedor cliente">🌐 Ver sitio</a>
+            <a href="agregar-usuario.html" data-permiso="administrador" class="btn btn-primario" style="margin-bottom: 1.5rem; display: inline-block;">➕ Agregar usuario</a>
+            <a href="#" id="cerrar-sesion">🚪 Cerrar sesión</a>
         </aside>
 
         <main class="admin-contenido">
@@ -30,51 +28,24 @@
             <table class="tabla-admin">
                 <thead>
                     <tr>
-                        <th>Run</th>
+                        <th>RUN</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Correo</th>
                         <th>Tipo</th>
                         <th>Acciones</th>
-                 </tr>
+                    </tr>
                 </thead>
+                <!-- FIX: se corrigió </tbody id="..."> inválido a </tbody> -->
                 <tbody id="tabla-usuarios">
-                    <tr>
-                        <td>18.315.867-5</td>
-                        <td>Juan Pérez</td>
-                        <td>juanp@duoc.cl</td>
-                        <td>+56 9 1234 5678</td>
-                        <td>12/08/2025</td>
-                    </tr>
-                    <tr>
-                        <td>17.987.999-k</td>
-                        <td>María González</td>
-                        <td>maria.gon@duoc.cl</td>
-                        <td>+56 9 8765 4321</td>
-                        <td>15/08/2025</td>
-                    </tr>
-                    <tr>
-                        <td>19.865.654-6</td>
-                        <td>Carlos Rojas</td>
-                        <td>carlosrojas@gmail.com</td>
-                        <td>+56 9 5555 4444</td>
-                        <td>20/08/2025</td>
-                    </tr>
-                    <tr>
-                        <td>16.865.978-4</td>
-                        <td>Ana Martínez</td>
-                        <td>anamartinez@profesor.duoc.cl</td>
-                        <td>+56 9 3333 2222</td>
-                        <td>25/08/2025</td>
-                    </tr>
-                </tbody id="tabla-usuarios">
+                </tbody>
             </table>
         </main>
 
     </div>
-        <script src="../js/datos.js"></script>
-        <script src="../js/regiones.js"></script>
-        <script src="../js/validaciones.js"></script>
-        <script src="../js/admin.js"></script>
+    <script src="../js/datos.js"></script>
+    <script src="../js/regiones.js"></script>
+    <script src="../js/validaciones.js"></script>
+    <script src="../js/admin.js"></script>
 </body>
 </html>

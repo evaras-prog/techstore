@@ -1,50 +1,44 @@
 function obtenerCarrito() {
-    return JSON.parse(localStorage.getItem("carritoTechStore"))||[];
+    return JSON.parse(localStorage.getItem("carritoTechStore")) || [];
 }
 
 function guardarCarrito(c) {
     localStorage.setItem("carritoTechStore", JSON.stringify(c));
-
-    if (typeof actualizarContadorCarrito==="function")actualizarContadorCarrito();
+    if (typeof actualizarContadorCarrito === "function") actualizarContadorCarrito();
 }
 
-function agregarAlCarrito(codigo, cantidad=1) {
-    const p=productoPorCodigo(codigo);
+function agregarAlCarrito(codigo, cantidad = 1) {
+    const p = productoPorCodigo(codigo);
+    if (!p || Number(p.stock) <= 0) return alert("Producto sin stock.");
+    cantidad = Math.max(1, Number(cantidad) || 1);
 
-    if (!p||Number(p.stock)<=0)return alert("Producto sin stock.");
-    cantidad=Math.max(1, Number(cantidad)||1);
+    const carrito = obtenerCarrito(),
+        existente = carrito.find(i => i.codigo === codigo),
+        actual = existente ? existente.cantidad : 0,
+        nueva = Math.min(actual + cantidad, Number(p.stock));
 
-    const carrito=obtenerCarrito(),
-    existente=carrito.find(i =>i.codigo===codigo),
-    actual=existente?existente.cantidad:0,
-    nueva=Math.min(actual+cantidad, Number(p.stock));
+    if (existente) existente.cantidad = nueva;
+    else carrito.push({
+        codigo: p.codigo, nombre: p.nombre, precio: Number(p.precio), imagen: p.imagen, cantidad: nueva
+    });
 
-    if (existente)existente.cantidad=nueva;
-
-    else carrito.push( {
-        codigo:p.codigo, nombre:p.nombre, precio:Number(p.precio), imagen:p.imagen, cantidad:nueva
-    }
-
-    );
-    
     guardarCarrito(carrito);
     alert("Producto agregado al carrito.");
 }
 
 function cambiarCantidad(codigo, valor) {
-    const p=productoPorCodigo(codigo),
-    carrito=obtenerCarrito(),
-    item=carrito.find(i =>i.codigo===codigo);
+    const p = productoPorCodigo(codigo),
+        carrito = obtenerCarrito(),
+        item = carrito.find(i => i.codigo === codigo);
 
-    if (!item||!p)return;
-    item.cantidad=Math.max(1, Math.min(Number(valor)||1, Number(p.stock)));
+    if (!item || !p) return;
+    item.cantidad = Math.max(1, Math.min(Number(valor) || 1, Number(p.stock)));
     guardarCarrito(carrito);
-
     mostrarCarrito();
 }
 
 function eliminarDelCarrito(codigo) {
-    guardarCarrito(obtenerCarrito().filter(i =>i.codigo!==codigo));
+    guardarCarrito(obtenerCarrito().filter(i => i.codigo !== codigo));
     mostrarCarrito();
 }
 
@@ -55,17 +49,17 @@ function vaciarCarrito() {
     }
 }
 
-
 function mostrarCarrito() {
     const tbody = document.getElementById('carrito-body');
     const totalEl = document.getElementById('carrito-total');
     if (!tbody) return;
 
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    // FIX: ahora lee de 'carritoTechStore' (clave unificada)
+    const carrito = obtenerCarrito();
 
     if (carrito.length === 0) {
         tbody.innerHTML = '<tr><td colspan="4">El carrito está vacío.</td></tr>';
-        totalEl.textContent = '$0';
+        if (totalEl) totalEl.textContent = '$0';
         return;
     }
 
@@ -85,7 +79,7 @@ function mostrarCarrito() {
         `;
     });
 
-    totalEl.textContent = '$' + total.toLocaleString('es-CL');
+    if (totalEl) totalEl.textContent = '$' + total.toLocaleString('es-CL');
 }
 
 mostrarCarrito();

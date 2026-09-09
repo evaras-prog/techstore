@@ -22,8 +22,7 @@ const regiones = [
     }
 ];
 
-//Llenar los selects
-
+// Llenar los selects de región y comuna
 function cargarRegiones() {
     const selectRegion = document.getElementById('region');
     const selectComuna = document.getElementById('comuna');
@@ -57,13 +56,12 @@ function cargarRegiones() {
 
 cargarRegiones();
 
-//Validación del Run
-
+// Validación del RUN con dígito verificador
 function validarRun(run) {
     run = run.replace(/\./g, '').replace(/-/g, '').toUpperCase();
     if (run.length < 2) return false;
 
-    const dígito = run.slice(-1);
+    const digito = run.slice(-1);
     const cuerpo = run.slice(0, -1);
     if (!/^\d+$/.test(cuerpo)) return false;
 
@@ -76,19 +74,18 @@ function validarRun(run) {
     const resto = suma % 11;
     const dvEsperado = 11 - resto === 11 ? '0' : 11 - resto === 10 ? 'K' : String(11 - resto);
 
-    return dígito === dvEsperado;
+    return digito === dvEsperado;
 }
 
-// Validación del formulario
+// Validación del formulario completo
 function validarFormRegistro(event) {
     event.preventDefault();
     let valido = true;
 
     const nombre = document.getElementById('nombre').value.trim();
-    const apellido = document.getElementById('apellido').value.trim();
+    const apellidos = document.getElementById('apellidos').value.trim();
     const run = document.getElementById('run').value.trim();
     const email = document.getElementById('email').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
     const direccion = document.getElementById('direccion').value.trim();
     const region = document.getElementById('region').value;
     const comuna = document.getElementById('comuna').value;
@@ -103,11 +100,11 @@ function validarFormRegistro(event) {
         document.getElementById('error-nombre').style.display = 'none';
     }
 
-    if (apellido === '') {
-        document.getElementById('error-apellido').style.display = 'block';
+    if (apellidos === '') {
+        document.getElementById('error-apellidos').style.display = 'block';
         valido = false;
     } else {
-        document.getElementById('error-apellido').style.display = 'none';
+        document.getElementById('error-apellidos').style.display = 'none';
     }
 
     if (!validarRun(run)) {
@@ -122,13 +119,6 @@ function validarFormRegistro(event) {
         valido = false;
     } else {
         document.getElementById('error-email').style.display = 'none';
-    }
-
-    if (!/^\+?[\d\s]{7,15}$/.test(telefono)) {
-        document.getElementById('error-telefono').style.display = 'block';
-        valido = false;
-    } else {
-        document.getElementById('error-telefono').style.display = 'none';
     }
 
     if (direccion === '') {
