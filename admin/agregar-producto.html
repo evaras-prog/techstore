@@ -27,240 +27,146 @@
         <main class="admin-contenido">
 
             <h1>Editar producto</h1>
-
             <div class="contenedor-formulario" style="max-width:700px; margin:0;">
-
                 <form id="form-producto" novalidate>
-
-                    <!-- GUARDA EL CÓDIGO ORIGINAL -->
+                     <!-- GUARDA EL CÓDIGO ORIGINAL -->
                     <input type="hidden" id="codigo-original">
-
                     <!-- GUARDA LA IMAGEN ANTERIOR -->
                     <input type="hidden" id="imagen-anterior">
-
-
                     <!-- CÓDIGO -->
-
                     <div class="grupo-campo">
-
                         <label for="codigo-prod">
                             Código del producto
                         </label>
-
                         <input
                             type="text"
                             id="codigo-prod"
                             placeholder="Ej: TEC001">
-
                         <span
                             class="error"
                             id="error-codigo-prod">
                             El código es obligatorio y debe tener mínimo 3 caracteres.
                         </span>
-
                     </div>
-
-
                     <!-- NOMBRE -->
-
                     <div class="grupo-campo">
-
                         <label for="nombre-prod">
                             Nombre del producto
                         </label>
-
                         <input
                             type="text"
                             id="nombre-prod"
                             placeholder="Ej: Laptop Ultrabook Pro">
-
                         <span
                             class="error"
                             id="error-nombre-prod">
                             El nombre es obligatorio y permite máximo 100 caracteres.
                         </span>
-
                     </div>
-
-
                     <!-- DESCRIPCIÓN -->
-
                     <div class="grupo-campo">
-
                         <label for="desc-prod">
                             Descripción
                         </label>
-
                         <textarea
                             id="desc-prod"
                             rows="4"
                             placeholder="Descripción del producto..."></textarea>
-
                         <span
                             class="error"
                             id="error-desc-prod">
                             La descripción permite máximo 500 caracteres.
                         </span>
-
                     </div>
-
-
                     <!-- PRECIO -->
-
                     <div class="grupo-campo">
-
                         <label for="precio-prod">
                             Precio
                         </label>
-
                         <input
                             type="number"
                             id="precio-prod"
                             placeholder="Ej: 599990">
-
                         <span
                             class="error"
                             id="error-precio-prod">
                             El precio es obligatorio y debe ser igual o mayor a 0.
                         </span>
-
                     </div>
-
-
                     <!-- STOCK -->
-
                     <div class="grupo-campo">
-
                         <label for="stock-prod">
                             Stock
                         </label>
-
                         <input
                             type="number"
                             id="stock-prod"
                             placeholder="Ej: 10">
-
                         <span
                             class="error"
                             id="error-stock-prod">
                             El stock es obligatorio y debe ser un número entero mayor o igual a 0.
                         </span>
-
                     </div>
-
-
                     <!-- STOCK CRÍTICO -->
-
                     <div class="grupo-campo">
-
                         <label for="stock-critico-prod">
                             Stock crítico
                         </label>
-
                         <input
                             type="number"
                             id="stock-critico-prod"
                             placeholder="Ej: 3">
-
                         <span
                             class="error"
                             id="error-stock-critico-prod">
                             El stock crítico debe ser un número entero mayor o igual a 0.
                         </span>
-
                     </div>
-
-
                     <!-- CATEGORÍA -->
-
                     <div class="grupo-campo">
-
                         <label for="categoria-prod">
                             Categoría
                         </label>
-
                         <select id="categoria-prod">
-
-                            <option value="">
-                                Selecciona categoría
-                            </option>
-
-                            <option value="Notebooks">
-                                Notebooks
-                            </option>
-
-                            <option value="Smartphone">
-                                Smartphone
-                            </option>
-
-                            <option value="Monitores">
-                                Monitores
-                            </option>
-
-                            <option value="Audio">
-                                Audio
-                            </option>
-
-                            <option value="Accesorios">
-                                Accesorios
-                            </option>
-
+                            <option value="">Selecciona categoría</option>
+                            <option value="Notebooks">Notebooks</option>
+                            <option value="Smartphone">Smartphone</option>
+                            <option value="Monitores">Monitores</option>
+                            <option value="Audio">Audio</option>
+                            <option value="Accesorios">Accesorios </option>
                         </select>
-
-                        <span
-                            class="error"
-                            id="error-categoria-prod">
-                            Debes seleccionar una categoría.
+                        <span class="error"id="error-categoria-prod">Debes seleccionar una categoría.
                         </span>
-
                     </div>
-
-
                     <!-- IMAGEN -->
-
                     <div class="grupo-campo">
-
-                        <label for="imagen-prod">
-                            Imagen del producto
-                        </label>
-
-                        <input
-                            type="file"
-                            id="imagen-prod"
-                            accept="image/*">
-
+                        <label for="imagen-prod">Imagen del producto </label>
+                        <input type="file"id="imagen-prod"accept="image/*">
+                        <small class="ayuda">Opcional. La imagen se guarda en LocalStorage para conservarse al recargar.</small>
                         <small>
                             Si no eliges una nueva imagen se mantendrá la anterior.
                         </small>
-
                     </div>
-
-
+                    </div class="acciones"> 
+                    <button class="btn btn-primario" type="submit">Guardar</button>
+                    <a class="btn btn-secundario" href="productos.html">Cancelar</a>
                     <!-- ALERTA STOCK -->
-
                     <div id="alerta-stock"></div>
-
-
                     <!-- BOTÓN -->
-
                     <button
                         type="submit"
                         class="btn btn-primario"
                         style="width:100%;">
-
                         Guardar cambios
-
                     </button>
-
                 </form>
-
             </div>
-
         </main>
-
     </div>
-
-
+    <script src="../js/datos.js"></script>
+    <script src="../js/regiones.js"></script>
+    <script src="../js/validaciones.js"></script>
     <script src="../js/admin.js"></script>
 
 </body>

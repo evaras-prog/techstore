@@ -1,17 +1,3 @@
-const regionesComunas = [
-    {
-        region: "Región Metropolitana",
-        comunas: ["Santiago", "Providencia", "Maipú", "Las Condes", "Estación Central"]
-    },
-    {
-        region: "Región de Valparaíso",
-        comunas: ["Valparaíso", "Viña del Mar", "Quilpué", "Villa Alemana"]
-    },
-    {
-        region: "Región del Biobío",
-        comunas: ["Concepción", "Talcahuano", "San Pedro de la Paz", "Los Ángeles"]
-    }
-];
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -663,81 +649,14 @@ function validarUsuario(evento) {
 
 
 /* =========================================================
-   REGIÓN Y COMUNA
+   CARGAR REGIÓN Y COMUNA
 ========================================================= */
-
 function cargarRegiones() {
-    const selectRegion =
-        document.getElementById("region-usuario");
-
-    if (!selectRegion) return;
-
-    selectRegion.innerHTML =
-        '<option value="">Selecciona región</option>';
-
-    regionesComunas.forEach(function (item) {
-        const opcion =
-            document.createElement("option");
-
-        opcion.value =
-            item.region;
-
-        opcion.textContent =
-            item.region;
-
-        selectRegion.appendChild(
-            opcion
-        );
-    });
+    cargarRegionesSelect("region-usuario");
 }
 
-
 function cargarComunas() {
-    const selectRegion =
-        document.getElementById("region-usuario");
-
-    const selectComuna =
-        document.getElementById("comuna-usuario");
-
-    if (!selectRegion || !selectComuna) {
-        return;
-    }
-
-    selectComuna.innerHTML =
-        '<option value="">Selecciona comuna</option>';
-
-    const regionEncontrada =
-        regionesComunas.find(
-            function (item) {
-                return (
-                    item.region ===
-                    selectRegion.value
-                );
-            }
-        );
-
-    if (!regionEncontrada) {
-        return;
-    }
-
-    regionEncontrada.comunas.forEach(
-        function (comuna) {
-            const opcion =
-                document.createElement(
-                    "option"
-                );
-
-            opcion.value =
-                comuna;
-
-            opcion.textContent =
-                comuna;
-
-            selectComuna.appendChild(
-                opcion
-            );
-        }
-    );
+    cargarComunasSelect("region-usuario", "comuna-usuario");
 }
 
 
@@ -1199,13 +1118,11 @@ function aplicarPermisos() {
         return;
     }
 
-
     /* OPCIONES DEL MENÚ */
     const opciones =
         document.querySelectorAll(
             "[data-permiso]"
         );
-
 
     opciones.forEach(
         function (opcion) {
@@ -1214,8 +1131,6 @@ function aplicarPermisos() {
                 opcion.dataset.permiso
                     .toLowerCase()
                     .split(/\s+/);
-
-
             if (
                 !permisos.includes(
                     rolNormalizado
@@ -1229,19 +1144,15 @@ function aplicarPermisos() {
         }
     );
 
-
     /* VENDEDOR */
     if (
         rolNormalizado ===
         "vendedor"
     ) {
-
         const accionesAdmin =
             document.querySelectorAll(
                 ".accion-administrador"
             );
-
-
         accionesAdmin.forEach(
             function (accion) {
 

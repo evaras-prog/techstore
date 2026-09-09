@@ -212,3 +212,8 @@ const formLogin = document.getElementById('form-login');
 if (formLogin) formLogin.addEventListener('submit', validarFormLogin);
 const formContacto = document.getElementById('form-contacto');
 if (formContacto) formContacto.addEventListener('submit', validarFormContacto)
+const regionRegistro = document.getElementById("region-registro");
+if (regionRegistro) {cargarRegionesSelect("region-registro");
+regionRegistro.addEventListener("change", function() {cargarComunasSelect("region-registro", "comuna-registro");});
+
+}

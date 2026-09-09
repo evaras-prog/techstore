@@ -52,3 +52,13 @@ function agregarAlCarrito(id) {
     localStorage.setItem('carrito', JSON.stringify(carrito));
     alert(`"${producto.nombre}" añadido al carrito.`);
 }
+
+function mostrarDestacados() {
+    const cont=document.getElementById("productos-destacados");
+    if (!cont)return;
+    cont.innerHTML=obtenerProductos().slice(0, 4).map(crearTarjetaProducto).join("");
+}
+
+function productoPorCodigo(codigo) {
+    return obtenerProductos().find(p =>p.codigo===codigo);
+}

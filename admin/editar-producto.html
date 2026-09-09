@@ -52,11 +52,16 @@
                             <option>Audio</option>
                             <option>Accesorios</option>
                         </select>
+                            <span class="error" id="error-categoria-prod">Selecciona una categoría.</span>
                     </div>
                     <div class="grupo-campo">
+                        <label for="imagen-prod">Imagen</label>
+                        <input id="imagen-prod" type="file" accept="image/*">
+                        <small class="ayuda">Opcional. La imagen se guarda en LocalStorage para conservarse al recargar.</small>                        
                         <label for="desc-prod">Descripción</label>
                         <textarea id="desc-prod" rows="4">Laptop de alto rendimiento con procesador Intel Core i7, 16GB RAM y 512GB SSD.</textarea>
                     </div>
+
                     <div style="display:flex; gap:1rem;">
                         <button type="submit" class="btn btn-primario" style="flex:1;">
                             Guardar cambios
@@ -70,6 +75,9 @@
         </main>
 
     </div>
-    <script src="../js/admin.js"></script>
+        <script src="../js/datos.js"></script>
+        <script src="../js/regiones.js"></script>
+        <script src="../js/validaciones.js"></script>
+        <script src="../js/admin.js"></script>
 </body>
 </html>
